@@ -62,23 +62,7 @@ This dual-window approach keeps your development server running uninterrupted wh
 
 ## Running the Application
 
-This template is technology-agnostic. Add your specific application startup instructions here based on your chosen stack:
-
-**Flask Example:**
-```bash
-python app.py
-# or use the flask_driver_runner.py with options for headless mode
-```
-
-**Django Example:**
-```bash
-python manage.py runserver
-```
-
-**Node.js Example:**
-```bash
-npm run dev
-```
+This template is technology-agnostic. Add your specific application startup instructions here based on your chosen stack.
 
 For Selenium automation scripts, ensure your virtual environment is activated and run:
 ```bash
