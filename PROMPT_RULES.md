@@ -1,5 +1,14 @@
 # Development Rules & Guidelines
 
+## Development Environment
+
+### Dual Window Warp Terminal Workflow
+This project is designed for a dual window Warp terminal setup:
+- **Window 1 (AI Agent)**: Use for prompting code changes, running git commands, and interacting with WARP AI agent
+- **Window 2 (Development)**: Use for running the application (Selenium, Flask, etc.), activating venv, and monitoring application output
+
+This separation allows you to maintain an active development session while simultaneously working with AI assistance without interrupting running processes.
+
 ## Design Philosophy
 
 ### Mobile-First Approach
