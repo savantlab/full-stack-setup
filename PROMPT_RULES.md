@@ -48,6 +48,7 @@
 - Implement CORS policies appropriately
 
 ## Version Control
+- **ALWAYS ask before committing changes** - Never commit without explicit user approval
 - Write clear, descriptive commit messages
 - Use feature branches for new development
 - Keep commits atomic and focused

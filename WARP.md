@@ -3,6 +3,8 @@
 ## Project Overview
 This is a mobile-first, full-stack application built with microservices architecture and API-based communication.
 
+**IMPORTANT**: Before starting any work, read and follow the guidelines in `PROMPT_RULES.md`.
+
 ## Architecture Principles
 - **Mobile-First Design**: All UI components and features should be designed for mobile devices first, then scaled up for desktop
 - **Microservices Architecture**: Services should be loosely coupled, independently deployable, and communicate via APIs

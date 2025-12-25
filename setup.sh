@@ -144,6 +144,31 @@ mkdir -p docs
 mkdir -p services
 mkdir -p shared
 
+# Initialize git repository if not already initialized
+if [ ! -d ".git" ]; then
+    echo "🔧 Initializing git repository..."
+    git init
+    echo -e "${GREEN}✓ Git repository initialized${NC}"
+else
+    echo -e "${YELLOW}⚠️  Git repository already exists. Skipping initialization.${NC}"
+fi
+
+# Prompt for remote repository URL
+echo ""
+read -p "Enter remote repository URL (or 'False' to skip): " REMOTE_URL
+
+if [ "$REMOTE_URL" = "False" ] || [ -z "$REMOTE_URL" ]; then
+    echo -e "${YELLOW}⚠️  Skipped adding remote repository${NC}"
+elif [ -n "$REMOTE_URL" ]; then
+    # Check if origin already exists
+    if git remote | grep -q "^origin$"; then
+        echo -e "${YELLOW}⚠️  Remote 'origin' already exists. Skipping.${NC}"
+    else
+        git remote add origin "$REMOTE_URL"
+        echo -e "${GREEN}✓ Remote origin added: $REMOTE_URL${NC}"
+    fi
+fi
+
 # Create README if it doesn't exist
 if [ ! -f "README.md" ]; then
     echo "📄 Creating README.md..."
@@ -188,6 +213,27 @@ This project follows a microservices architecture. See `docs/` for detailed docu
 [Add contribution guidelines]
 EOF
     echo -e "${GREEN}✓ README.md created${NC}"
+fi
+
+# Create initial commit and push if remote exists
+if git remote | grep -q "^origin$"; then
+    echo ""
+    echo "📤 Creating initial commit and pushing to remote..."
+    
+    # Check if there are any changes to commit
+    if [ -n "$(git status --porcelain)" ]; then
+        git add .
+        git commit -m "Initial commit: Project setup
+
+Co-Authored-By: Warp <agent@warp.dev>"
+        echo -e "${GREEN}✓ Initial commit created${NC}"
+        
+        # Push to remote
+        git push -u origin main
+        echo -e "${GREEN}✓ Pushed to remote repository${NC}"
+    else
+        echo -e "${YELLOW}⚠️  No changes to commit${NC}"
+    fi
 fi
 
 echo ""
